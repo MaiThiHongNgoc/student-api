@@ -5,7 +5,11 @@ require('dotenv').config(); // Nạp biến môi trường từ file .env
 
 const app = express();
 app.use(express.json()); // Để đọc dữ liệu JSON từ request body
-app.use(cors()); // Enable CORS for all routes
+app.use(cors({
+    origin: 'http://localhost:3000', // Hoặc các nguồn khác nếu cần
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  })); // Enable CORS for all routes
 
 // Khởi tạo mội trường SDK của Firebase
 admin.initializeApp({
