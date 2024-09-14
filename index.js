@@ -1,9 +1,11 @@
 const express = require('express');
 const admin = require('firebase-admin');
+const cors = require('cors'); // Add this line
 require('dotenv').config(); // Nạp biến môi trường từ file .env
 
 const app = express();
 app.use(express.json()); // Để đọc dữ liệu JSON từ request body
+app.use(cors()); // Enable CORS for all routes
 
 // Khởi tạo mội trường SDK của Firebase
 admin.initializeApp({
